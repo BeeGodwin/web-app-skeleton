@@ -1,3 +1,4 @@
-import join from 'lodash/join';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log(join(['Hello', 'World'], ' '));
+ReactDOM.render(React.createElement('div', null, 'Hello World'), document.getElementById('root'));
