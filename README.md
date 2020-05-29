@@ -16,15 +16,15 @@ Mocks of 3rd parties etc will need to be provided to contexts of larger tests wi
 
 ### Wishlist
 
-- Add Redux store, populate serverside with arbitrary API response as JSON.
-- Add Cucumber environment for scenario testing / step defs
 - Typescript, and Typescript testing
+- Config patterning for passing in setup / dials
 - Isomorphic patterning
-- Config patterning
+- Add Redux store, populate serverside with arbitrary API response as JSON.
 - Styling layer
+- Add Cucumber environment for scenario testing / step defs
+- Can deploy a parameterised chassis
 - Can integrate to CI and build via Jenkins. Preferably, can create its own Jenkins job.
 - Can integrate to CD and deploy via Cosmos. Preferably, can do this programatically.
-- Can slide the chassis underneath some other codebase, thus standardising.
 
 ### Known Stuff
 
