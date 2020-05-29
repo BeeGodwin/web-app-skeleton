@@ -1,14 +1,20 @@
-module: {
-  rules: [
-    {
-      test: /\.m?js$/,
-      exclude: /(node_modules|bower_components)/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env']
+const path = require('path');
+
+const config = {
+  entry: [
+    './src/index.js'
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
         }
       }
-    }
-  ]
-}
+    ]
+  }
+};
+
+module.exports = config;
