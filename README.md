@@ -1,11 +1,13 @@
 # web-app-skeleton
 
-A basic chassis to fork from in order to create web apps. Created as a 10% time learning project. Early days.
+A basic chassis to fork from in order to create web apps based on the Sounds backend. Created as a 10% time learning project. Early days.
 
-## Integrations
-- Babel (js, jsx)
+## The Stack
+- Babel
 - Webpack
-- React / ReactDOM
+- React
+- Express
+- Redux
 - Mocha
 
 ### Test Tooling
@@ -14,15 +16,14 @@ Mocha is moderately complex to set up for React. See `package.json` for usage- s
 
 Mocks of 3rd parties etc will need to be provided to contexts of larger tests with `--require`, in the same way that `setup.js` is looped in. Use the `yarn test:unit` script as a basis for creating these test contexts.
 
+### Isomorphism / SSR
+
+The skeleton runs an Express server with a single route, `/programme/:pid`. pid is used to parameterise an RMS query, which is used to create a Redux store. This is serialised and passed to the client, which 
+
 ### Wishlist
 
 - Typescript, and Typescript testing
 - Config patterning for passing in setup / dials
-- Express or similar backend
-- Isomorphic patterning
-- Add Redux store
-- Add HTTP client / RMS client 
-- populate redux store serverside
 - Styling layer
 - Add Cucumber environment for scenario testing / step defs
 - Can deploy a parameterised chassis
