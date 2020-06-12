@@ -35,6 +35,8 @@
   },
   "dependencies": {
     "@babel/register": "^7.10.1",
+    "@bbc/rms-client": "^5.18.0",
+    "flashheart": "^3.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }

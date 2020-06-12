@@ -13,6 +13,6 @@ describe('App component', () => {
   it('renders an h1', () => {
     const wrapper = mount(<App />);
     const node = wrapper.find('h1');
-    expect(node).to.exist;
+    expect(node.exists()).to.be.true;
   });
 });

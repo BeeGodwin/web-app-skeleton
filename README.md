@@ -12,14 +12,17 @@ A basic chassis to fork from in order to create web apps. Created as a 10% time 
 
 Mocha is moderately complex to set up for React. See `package.json` for usage- so mocha loops in a Babel transpile and a `setup.js` that makes an Enzyme adapter and a virtual DOM to render into, followed by a pattern match on the path and extensions provided. 
 
-Mocks of 3rd parties etc will need to be provided to contexts of larger tests with `--require`. Use the `yarn test:unit` script as a basis for creating these test contexts.
+Mocks of 3rd parties etc will need to be provided to contexts of larger tests with `--require`, in the same way that `setup.js` is looped in. Use the `yarn test:unit` script as a basis for creating these test contexts.
 
 ### Wishlist
 
 - Typescript, and Typescript testing
 - Config patterning for passing in setup / dials
+- Express or similar backend
 - Isomorphic patterning
-- Add Redux store, populate serverside with arbitrary API response as JSON.
+- Add Redux store
+- Add HTTP client / RMS client 
+- populate redux store serverside
 - Styling layer
 - Add Cucumber environment for scenario testing / step defs
 - Can deploy a parameterised chassis
