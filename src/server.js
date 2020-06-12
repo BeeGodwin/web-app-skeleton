@@ -8,14 +8,13 @@ const rmsClient = RMSClient.createClient({
   apiKey: process.env.RMS_CLIENT_API_KEY
 });
 
-app.get('/rms', (req, res) => {
-  const query = rmsClient.v2ProgrammePlayable().pid('p088s3d2');
+app.get('/programme/:pid', (req, res) => {
+  const query = rmsClient.v2ProgrammePlayable().pid(req.params.pid);
 
   rmsClient.get(query)
   .then(
-    ({body, headers, statusCode}) => {res.send(body);},
+    ({body}) => {res.send(body);},
     err => { res.send(err);});
-  // res.send('This is a route');
 });
 
 app.use(express.static('dist'));
