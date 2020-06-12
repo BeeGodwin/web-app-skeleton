@@ -20,7 +20,7 @@ app.get('/programme/:pid',
   (req, res) => {
     const { pid } = req.params;
     const query = rmsClient.v2ProgrammePlayable().pid(pid);
-    let preloadedState = { hello: 'world'};
+    let preloadedState = {};
 
     rmsClient
       .get(query)
@@ -40,14 +40,12 @@ app.get('/programme/:pid',
   }
 );
 
-
-
 function renderPage(html, preloadedState) {
   return `
   <!doctype html>
   <html>
     <head>
-      <title>Redux Universal Example</title>
+      <title>Web App Skeleton</title>
     </head>
     <body>
       <div id="root">${html}</div>
@@ -58,7 +56,6 @@ function renderPage(html, preloadedState) {
           /</g,
           '\\u003c'
         )}
-        
       </script>
       <script src="/dist/main.js"></script>
     </body>

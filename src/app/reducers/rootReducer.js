@@ -1,7 +1,5 @@
-export default (state = { test: 'wassup' }, action) => {
+export default (state = {}, action) => {
   switch(action.type) {
-    case 'HYDRATE_STORE':
-      return state;
     default:
       return state;
   }
