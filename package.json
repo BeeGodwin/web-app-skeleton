@@ -7,9 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode development",
-    "watch": "webpack --mode development --watch",
+    "watch": "rm -rf dist; webpack --mode development --watch",
     "start": "nodemon --exec babel-node src/server.js",
-    "dev": "node dist/main.js",
     "test": "yarn test:unit",
     "test:unit": "mocha --require @babel/register --require test/setup.js --recursive 'test/unit/app/*-{test.js,test.jsx}'"
   },
