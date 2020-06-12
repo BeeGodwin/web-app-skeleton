@@ -1,5 +1,5 @@
-const express = require('express');
-const RMSClient = require('@bbc/rms-client');
+import express from 'express';
+import RMSClient from '@bbc/rms-client';
 
 const app = express();
 const port = 3000;
