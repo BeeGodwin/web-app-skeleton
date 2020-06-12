@@ -11,8 +11,10 @@ import App from './app/containers/App';
 const app = express();
 const port = 3000;
 
+// serve client side bundles from static folder
 app.use('/dist', express.static('dist'));
 
+// example route
 app.get('/programme/:pid', 
   (req, res) => {
     const { pid } = req.params;

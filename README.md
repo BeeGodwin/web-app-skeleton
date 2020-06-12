@@ -18,7 +18,7 @@ Mocks of 3rd parties etc will need to be provided to contexts of larger tests wi
 
 ### Isomorphism / SSR
 
-The skeleton runs an Express server with a single route, `/programme/:pid`. pid is used to parameterise an RMS query, which is used to create a Redux store. This is serialised and passed to the client via `window.__PRELOADED_STATE__` (set in `app/render.js`), which creates its own, client-side store. Containers and components can map into this in the usual way. 
+The skeleton runs an Express server with a single (example) route, `/programme/:pid`. pid is used to parameterise an RMS query, which is used to create a Redux store. This is serialised and passed to the client via `window.__PRELOADED_STATE__` (set in `app/render.js`), which creates its own, client-side store. Containers and components can map into this in the usual way. 
 
 ### Wishlist
 
@@ -32,4 +32,4 @@ The skeleton runs an Express server with a single route, `/programme/:pid`. pid 
 
 ### Known Stuff
 
-- linter is not config'd yet
+- linter config
