@@ -7,12 +7,16 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode development",
-    "start": "webpack-dev-server src/index.js",
+    "watch": "webpack --mode development --watch",
+    "start": "nodemon --exec babel-node src/server.js",
+    "dev": "node dist/main.js",
     "test": "yarn test:unit",
     "test:unit": "mocha --require @babel/register --require test/setup.js --recursive 'test/unit/app/*-{test.js,test.jsx}'"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.1",
     "@babel/core": "^7.10.1",
+    "@babel/node": "^7.10.1",
     "@babel/preset-env": "^7.10.1",
     "@babel/preset-react": "^7.10.1",
     "babel-loader": "^8.1.0",
@@ -28,6 +32,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "jsdom": "^16.2.2",
     "mocha": "^7.2.0",
+    "nodemon": "^2.0.4",
     "sinon": "^9.0.2",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
@@ -35,9 +40,10 @@
   },
   "dependencies": {
     "@babel/register": "^7.10.1",
-    "@bbc/rms-client": "^5.18.0",
-    "flashheart": "^3.2.1",
+    "@babel/runtime": "^7.10.2",
+    "express": "^4.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
-  }
+  },
+  "private": true
 }

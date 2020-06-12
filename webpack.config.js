@@ -1,7 +1,8 @@
-const config = {
-  entry: [
-    './src/index.js'
-  ],
+const path = require("path");
+const webpack = require('webpack');
+
+module.exports = {
+  entry: path.join(__dirname, './src/index.js'),
   module: {
     rules: [
       {
@@ -12,7 +13,20 @@ const config = {
         }
       }
     ]
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'main.js',
+    publicPath: '/'
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devServer: {
+    hot: true,
+    historyApiFallback: true
   }
 };
-
-module.exports = config;
