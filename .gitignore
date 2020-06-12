@@ -1,7 +1,8 @@
 
 node_modules/
 
-dist/main.js
+dist/
+!dist/index.html
 
 yarn-error.log
 
