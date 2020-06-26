@@ -2,8 +2,9 @@ import React from 'react';
 import { hydrate } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import rootReducer from './app/reducers/rootReducer';
-import App from './app/containers/App';
+import App from './app/App';
 import './sass/styles.scss';
 
 const preloadedState = window.__PRELOADED_STATE__;
@@ -17,8 +18,10 @@ const store = createStore(
 );
 
 hydrate(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Router>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </Router>,
   document.getElementById('root')
 );

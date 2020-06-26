@@ -3,10 +3,11 @@ import { getProgramme } from './app/clients/rms';
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 import renderInTemplate from './app/render';
 import rootReducer from './app/reducers/rootReducer';
-import App from './app/containers/App';
+import App from './app/App';
 
 const app = express();
 const port = 3000;
@@ -28,7 +29,12 @@ app.get('/programme/:pid',
           rootReducer, 
           preloadedState,
         );
-        const html = renderToString(<Provider store={store}><App /></Provider>);
+        const html = renderToString(
+        <StaticRouter context={{}} location={req.url}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </StaticRouter>);
         const readyState = store.getState();
         res.send(renderInTemplate(html, readyState));
       }
