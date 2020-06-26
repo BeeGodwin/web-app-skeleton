@@ -16,7 +16,7 @@ const port = 3000;
 app.use('/dist', express.static('dist'));
 
 // example route
-app.get('/programme/:pid', 
+app.get(['/programme/:pid', '/episode/:pid', '/brand/:pid'], 
   (req, res) => {
     const { pid } = req.params;
     let preloadedState = {};
@@ -25,18 +25,21 @@ app.get('/programme/:pid',
         ({body}) => {preloadedState = body;},
         err => { res.send(err);}
       ).then(() => {
+        const serverSideProps = {
+          pid
+        };
         const store = createStore(
           rootReducer, 
           preloadedState,
-        );
+          );
         const html = renderToString(
         <StaticRouter context={{}} location={req.url}>
           <Provider store={store}>
-            <App />
+            <App pid={pid} />
           </Provider>
         </StaticRouter>);
         const readyState = store.getState();
-        res.send(renderInTemplate(html, readyState));
+        res.send(renderInTemplate(html, readyState, serverSideProps));
       }
     );
   }

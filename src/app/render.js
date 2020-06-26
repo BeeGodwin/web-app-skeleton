@@ -1,4 +1,4 @@
-export default (html, preloadedState) => {
+export default (html, preloadedState, serverSideProps) => {
   return `
   <!doctype html>
   <html>
@@ -10,11 +10,9 @@ export default (html, preloadedState) => {
       <script>
         // WARNING: See the following for security issues around embedding JSON in HTML:
         // https://redux.js.org/recipes/server-rendering/#security-considerations
-        window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(
-          /</g,
-          '\\u003c'
-        )}
+        window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g,'\\u003c')}
       </script>
+      <script>window.serverSideProps = ${JSON.stringify(serverSideProps).replace(/</g,'\\u003c')}</script>
       <script src="/dist/main.js"></script>
     </body>
   </html>
