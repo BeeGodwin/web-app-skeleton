@@ -6,6 +6,8 @@ A basic chassis to fork from in order to create web apps based on the Sounds bac
 - Babel
 - Webpack
 - React
+- React Router
+- Grandstand
 - Express
 - Redux
 - Mocha
