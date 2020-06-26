@@ -22,7 +22,7 @@ Mocks of 3rd parties etc will need to be provided to contexts of larger tests wi
 
 The skeleton runs an Express server with a single (example) route, `/programme/:pid`. pid is used to parameterise an RMS query, which is used to create a Redux store. This is serialised and passed to the client via `window.__PRELOADED_STATE__` (set in `app/render.js`), which creates its own, client-side store. Containers and components can map into this in the usual way. 
 
-`react-router` is used to manage the app as a SPA. A mini app is created with examplars for routes. At present data is only fetched server side but client side fetching is simpler (e.g. async actions via axios passing the payloads of resolved promises into Redux actions.)
+`react-router` is used to manage the app as a SPA. A mini app is created with example routes. At present data is only fetched server side but client side fetching is simpler (e.g. async actions via axios passing the payloads of resolved promises into Redux actions.)
 
 ### Wishlist
 
@@ -37,3 +37,4 @@ The skeleton runs an Express server with a single (example) route, `/programme/:
 
 - linter config
 - deeper dive possible on routing etc.
+- testing the server-side stuff (mocking remote calls etc)
