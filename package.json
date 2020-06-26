@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode development",
+    "dev": "concurrently \"yarn:watch\" \"yarn:start\"",
     "watch": "rm -rf dist; webpack --mode development --watch",
     "start": "nodemon --exec babel-node src/server.js",
     "test": "yarn test:unit",
@@ -21,6 +22,7 @@
     "babel-loader": "^8.1.0",
     "bbc-grandstand": "https://github.com/bbc/grandstand.git",
     "chai": "^4.2.0",
+    "concurrently": "^5.2.0",
     "css-loader": "^3.6.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
