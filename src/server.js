@@ -15,7 +15,7 @@ const port = 3000;
 // serve client side bundles from static folder
 app.use('/dist', express.static('dist'));
 
-// example route
+// example route (all these react-router paths provide views on the same data)
 app.get(['/programme/:pid', '/episode/:pid', '/brand/:pid'], 
   (req, res) => {
     const { pid } = req.params;
@@ -25,9 +25,6 @@ app.get(['/programme/:pid', '/episode/:pid', '/brand/:pid'],
         ({body}) => {preloadedState = body;},
         err => { res.send(err);}
       ).then(() => {
-        const serverSideProps = {
-          pid
-        };
         const store = createStore(
           rootReducer, 
           preloadedState,
@@ -39,7 +36,7 @@ app.get(['/programme/:pid', '/episode/:pid', '/brand/:pid'],
           </Provider>
         </StaticRouter>);
         const readyState = store.getState();
-        res.send(renderInTemplate(html, readyState, serverSideProps));
+        res.send(renderInTemplate(html, readyState));
       }
     );
   }

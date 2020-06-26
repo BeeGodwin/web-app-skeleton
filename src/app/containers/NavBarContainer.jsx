@@ -1,14 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { lastSegmentOfLocation } from '../helpers/path';
+import PropTypes from 'prop-types';
 
 const NavBarContainer = (props) => {
-  const { pid } = props;
+  const { location } = props;
+  
+  const pid = lastSegmentOfLocation(location);
+
   return (
     <React.Fragment>
-      <Link to={`/episode/${pid}`}>Episode View</Link>
-      <Link to={`/brand/${pid}`}>Brand View</Link>
+      <ul>
+        <li>
+          <Link to={`/brand/${pid}`}>Brand View</Link>
+        </li>
+        <li>
+          <Link to={`/episode/${pid}`}>Episode View</Link>
+        </li>
+      </ul>
     </React.Fragment>
   );
 };
 
-export default NavBarContainer;
+NavBarContainer.propTypes = {
+  location: PropTypes.object
+};
+
+export default withRouter(NavBarContainer);

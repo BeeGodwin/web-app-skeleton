@@ -8,10 +8,8 @@ import App from './app/App';
 import './sass/styles.scss';
 
 const preloadedState = window.__PRELOADED_STATE__;
-const serverSideProps = window.serverSideProps;
 
 delete window.__PRELOADED_STATE__;
-delete window.serverSideProps;
 
 const store = createStore(
   rootReducer, 
@@ -22,7 +20,7 @@ const store = createStore(
 hydrate(
   <Router>
     <Provider store={store}>
-      <App pid={serverSideProps.pid}/>
+      <App />
     </Provider>
   </Router>,
   document.getElementById('root')

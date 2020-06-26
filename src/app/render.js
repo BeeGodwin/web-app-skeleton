@@ -1,4 +1,4 @@
-export default (html, preloadedState, serverSideProps) => {
+export default (html, preloadedState) => {
   return `
   <!doctype html>
   <html>
@@ -12,7 +12,6 @@ export default (html, preloadedState, serverSideProps) => {
         // https://redux.js.org/recipes/server-rendering/#security-considerations
         window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g,'\\u003c')}
       </script>
-      <script>window.serverSideProps = ${JSON.stringify(serverSideProps).replace(/</g,'\\u003c')}</script>
       <script src="/dist/main.js"></script>
     </body>
   </html>
