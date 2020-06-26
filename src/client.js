@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './app/reducers/rootReducer';
 import App from './app/containers/App';
+import './sass/styles.scss';
 
 const preloadedState = window.__PRELOADED_STATE__;
 

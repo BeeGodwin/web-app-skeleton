@@ -1,7 +1,7 @@
 import RMSClient from '@bbc/rms-client';
 
 const client = RMSClient.createClient({
-  apiKey: process.env.MS_CLIENT_API_KEY
+  apiKey: process.env.RMS_CLIENT_API_KEY
 });
 
 export const getProgramme = (pid) => {
