@@ -5,7 +5,7 @@ import get from 'lodash/get';
 const EpisodeViewContainer = (props) => {
 
   // eslint-disable-next-line react/prop-types
-  const {primaryTitle, secondaryTitle, tertiaryTitle, synopsis } = props;
+  const { primaryTitle, secondaryTitle, tertiaryTitle, synopsis } = props;
   return (
     <React.Fragment>
       <h1>Episode View</h1> 
@@ -17,10 +17,10 @@ const EpisodeViewContainer = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    primaryTitle: get(state, 'titles.primary'),
-    secondaryTitle: get(state, 'titles.secondary'),
-    tertiaryTitle: get(state, 'titles.tertiary'),
-    synopsis: get(state, 'synopses.short'),
+    primaryTitle: get(state, 'programme.titles.primary'),
+    secondaryTitle: get(state, 'programme.titles.secondary'),
+    tertiaryTitle: get(state, 'programme.titles.tertiary'),
+    synopsis: get(state, 'programme.synopses.short'),
   };
 };
 

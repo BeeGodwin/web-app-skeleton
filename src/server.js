@@ -8,6 +8,7 @@ import { renderToString } from 'react-dom/server';
 import renderInTemplate from './app/render';
 import rootReducer from './app/reducers/rootReducer';
 import App from './app/App';
+import { programme } from './app/models/programme';
 
 const app = express();
 const port = 3000;
@@ -16,13 +17,16 @@ const port = 3000;
 app.use('/dist', express.static('dist'));
 
 // example route (all these react-router paths provide views on the same data)
-app.get(['/programme/:pid', '/episode/:pid', '/brand/:pid'], 
+app.get(['/:pid', '/episode/:pid', '/brand/:pid'], 
   (req, res) => {
     const { pid } = req.params;
     let preloadedState = {};
     getProgramme(pid)
       .then(
-        ({body}) => {preloadedState = body;},
+        ({body}) => {
+          const model = programme(body);
+          preloadedState = { programme: model };
+        },
         err => { res.send(err);}
       ).then(() => {
         const store = createStore(
