@@ -1,24 +1,19 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 import { lastSegmentOfLocation } from '../helpers/path';
 import PropTypes from 'prop-types';
 
+import SinglePidForm from '../components/SinglePidForm';
+
 
 const NavBarContainer = (props) => {
-  const { register, handleSubmit } = useForm();
 
   const { location } = props;
   const pid = lastSegmentOfLocation(location);
-  const onSubmit = formData => console.log('BEEBUG: data', formData.pidInput);
 
   return (
     <React.Fragment>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label className="gs-u-p" htmlFor="pid-input">Enter pid</label>
-        <input className="gs-u-p" type="text" name="pidInput" ref={register}/>
-        <input className="gs-u-p" type="submit" value="Submit" />
-      </form>
+      <SinglePidForm />
       <ul>
         <li>
           <Link to={`/brand/${pid}`}>Brand View</Link>
