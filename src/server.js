@@ -27,7 +27,7 @@ app.get(['/:pid', '/episode/:pid', '/brand/:pid'],
           const model = programme(body);
           preloadedState = { programme: model };
         },
-        err => { res.send(err);}
+        err => { res.send(err); }
       ).then(() => {
         const store = createStore(
           rootReducer, 
@@ -57,7 +57,8 @@ app.get(['/data/:pid'],
         const model = programme(body);
         data = model;
         res.send(data);
-      }  
+      }, 
+      err => { res.send(err); }  
     );
   }
 );

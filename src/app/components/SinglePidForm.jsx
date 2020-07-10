@@ -1,11 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { fetchSinglePid } from '../helpers/fetchSinglePid';
+import PropTypes from 'prop-types';
+import fetchSinglePid from '../helpers/fetchSinglePid';
+import { updateProgramme } from '../actions/programme';
 
-const SinglePidForm = () => {
+const SinglePidForm = (props) => {
+
+  const { dispatch } = props;
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = formData => fetchSinglePid(formData.pidInput);
+  const onSubmit = formData => {
+    fetchSinglePid(formData.pidInput)
+    .then(
+      (programme) => dispatch(updateProgramme(programme)));
+  };
 
   return (
     <React.Fragment>
@@ -18,4 +27,8 @@ const SinglePidForm = () => {
   );
 };
 
-export default SinglePidForm;
+SinglePidForm.propTypes = {
+  dispatch: PropTypes.func.isRequired
+};
+
+export default connect()(SinglePidForm);
