@@ -46,4 +46,20 @@ app.get(['/:pid', '/episode/:pid', '/brand/:pid'],
   }
 );
 
+// data-only route
+app.get(['/data/:pid'],
+  (req, res) => {
+    const { pid } = req.params;
+    let data = {};
+    getProgramme(pid)
+    .then(
+      ({body}) => {
+        const model = programme(body);
+        data = model;
+        res.send(data);
+      }  
+    );
+  }
+);
+
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
