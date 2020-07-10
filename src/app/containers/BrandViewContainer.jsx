@@ -18,8 +18,8 @@ const BrandViewContainer = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    title: get(state, 'container.title'),
-    synopsis: get(state, 'container.synopses.short')
+    title: get(state, 'programme.container.title'),
+    synopsis: get(state, 'programme.container.synopses.short')
   };
 };
 
