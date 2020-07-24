@@ -8,3 +8,8 @@ export const getProgramme = (pid) => {
   const query = client.v2ProgrammePlayable().pid(pid);
   return client.get(query);
 };
+
+export const getExperience = (pid) => {
+  const query = client.experienceInlinePlaySignedOut().identifier(pid);
+  return client.get(query);
+};

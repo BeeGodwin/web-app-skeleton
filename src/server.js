@@ -1,5 +1,5 @@
 import express from 'express';
-import { getProgramme } from './app/clients/rms';
+import { getProgramme, getExperience } from './app/clients/rms';
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -9,6 +9,7 @@ import renderInTemplate from './app/render';
 import rootReducer from './app/reducers/rootReducer';
 import App from './app/App';
 import { programme } from './app/models/programme';
+import { experience } from './app/models/experience';
 
 const app = express();
 const port = 3000;
@@ -19,6 +20,7 @@ app.use('/dist', express.static('dist'));
 // example route (all these react-router paths provide views on the same data)
 app.get(['/:pid', '/episode/:pid', '/brand/:pid'], 
   (req, res) => {
+    // res.setHeader('Content-Type', 'text/html');
     const { pid } = req.params;
     let preloadedState = {};
     getProgramme(pid)
@@ -27,7 +29,9 @@ app.get(['/:pid', '/episode/:pid', '/brand/:pid'],
           const model = programme(body);
           preloadedState = { programme: model };
         },
-        err => { res.send(err); }
+        err => { 
+          console.log(`BEEBUG: error: ${err.status}, ${err.url}`);
+        }
       ).then(() => {
         const store = createStore(
           rootReducer, 
@@ -45,6 +49,35 @@ app.get(['/:pid', '/episode/:pid', '/brand/:pid'],
     );
   }
 );
+
+app.get('/experience/:pid', (req, res) => {
+  const { pid } = req.params;
+  let preloadedState = {};
+  getExperience(pid).then(
+    ({body}) => {
+      const model = experience(body);
+      preloadedState = { ...model };
+    },
+    err => { 
+      console.log(`BEEBUG: error: ${err.status}, ${err.url}`);
+    }
+  ).then(
+    () => {
+      const store = createStore(
+        rootReducer, 
+        preloadedState,
+        );
+      const html = renderToString(
+      <StaticRouter context={{}} location={req.url}>
+        <Provider store={store}>
+          <App pid={pid} />
+        </Provider>
+      </StaticRouter>);
+      const readyState = store.getState();
+      res.send(renderInTemplate(html, readyState));
+    }
+  );
+});
 
 // data-only route
 app.get(['/data/:pid'],
